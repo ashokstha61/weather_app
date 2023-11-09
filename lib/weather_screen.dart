@@ -93,14 +93,46 @@ class WeatherScreen extends StatelessWidget {
               scrollDirection: Axis.horizontal,
               child: Row(
                 children: [
-                  HourlyForcastItem(),
-                  HourlyForcastItem(),
-                  HourlyForcastItem(),
-                  HourlyForcastItem(),
-                  HourlyForcastItem(),
-                  HourlyForcastItem(),
-                  HourlyForcastItem(),
-                  HourlyForcastItem(),
+                  HourlyForcastItem(
+                    time: '3:00',
+                    temperature: '10℃',
+                    icon: Icons.cloud,
+                  ),
+                  HourlyForcastItem(
+                    time: '4:00',
+                    temperature: '15℃',
+                    icon: Icons.cloud,
+                  ),
+                  HourlyForcastItem(
+                    time: '5:00',
+                    temperature: '15℃',
+                    icon: Icons.cloud,
+                  ),
+                  HourlyForcastItem(
+                    time: '6:00',
+                    temperature: '20℃',
+                    icon: Icons.sunny_snowing,
+                  ),
+                  HourlyForcastItem(
+                    time: '7:00',
+                    temperature: '16℃',
+                    icon: Icons.water_drop_outlined,
+                  ),
+                  HourlyForcastItem(
+                    time: '8:00',
+                    temperature: '19℃',
+                    icon: Icons.cloud,
+                  ),
+                  HourlyForcastItem(
+                    time: '9:00',
+                    temperature: '25℃',
+                    icon: Icons.sunny,
+                  ),
+                  HourlyForcastItem(
+                    time: '10:00',
+                    temperature: '32℃',
+                    icon: Icons.sunny,
+                  ),
                 ],
               ),
             ),
@@ -118,20 +150,20 @@ class WeatherScreen extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 AdditionalInformation(
-              icon: Icons.water_drop,
-              label: 'Humidity',
-              value: '91',
-            ),
-            AdditionalInformation(
-              icon: Icons.air,
-              label: 'Wind Speed',
-              value: '7.5',
-            ),
-            AdditionalInformation(
-              icon: Icons.beach_access,
-              label: 'Pressure',
-              value: '1007',
-            ),
+                  icon: Icons.water_drop,
+                  label: 'Humidity',
+                  value: '91',
+                ),
+                AdditionalInformation(
+                  icon: Icons.air,
+                  label: 'Wind Speed',
+                  value: '7.5',
+                ),
+                AdditionalInformation(
+                  icon: Icons.beach_access,
+                  label: 'Pressure',
+                  value: '1007',
+                ),
               ],
             )
           ],
