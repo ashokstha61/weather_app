@@ -1,111 +1,39 @@
 import 'package:flutter/material.dart';
 
 class AdditionalInformation extends StatelessWidget {
-  const AdditionalInformation({super.key});
+  final IconData icon;
+  final String label;
+  final String value;
+  const AdditionalInformation({
+    super.key,
+    required this.icon,
+    required this.label,
+    required this.value,
+  });
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      physics: const AlwaysScrollableScrollPhysics(),
-      scrollDirection: Axis.horizontal,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        children: [
-          Card(
-            elevation: 6,
-            child: Container(
-              width: 100,
-              padding: const EdgeInsets.all(8.0),
-              decoration:
-                  BoxDecoration(borderRadius: BorderRadius.circular(10)),
-              child: const Column(
-                children: [
-                  Icon(
-                    Icons.water_drop,
-                    size: 32,
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  Text(
-                    'Humidity',
-                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  Text(
-                    '94',
-                    style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
-                  ),
-                ],
-              ),
-            ),
-          ),
-          Card(
-            elevation: 6,
-            child: Container(
-              width: 100,
-              padding: const EdgeInsets.all(8.0),
-              decoration:
-                  BoxDecoration(borderRadius: BorderRadius.circular(10)),
-              child: const Column(
-                children: [
-                  Icon(
-                    Icons.air,
-                    size: 32,
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  Text(
-                    'Wind Speed',
-                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  Text(
-                    '7.67',
-                    style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
-                  ),
-                ],
-              ),
-            ),
-          ),
-          Card(
-            elevation: 6,
-            child: Container(
-              width: 100,
-              padding: const EdgeInsets.all(8.0),
-              decoration:
-                  BoxDecoration(borderRadius: BorderRadius.circular(10)),
-              child: const Column(
-                children: [
-                  Icon(
-                    Icons.umbrella,
-                    size: 32,
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  Text(
-                    'Pressure',
-                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  Text(
-                    '1006',
-                    style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
-                  ),
-                ],
-              ),
-            ),
-          ),
-        ],
-      ),
-    );
+    return Column(
+              children: [
+                Icon(
+                  icon,
+                  size: 32,
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                Text(
+                  label,
+                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                Text(
+                  value,
+                  style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
+                ),
+              ],
+            );
   }
 }
