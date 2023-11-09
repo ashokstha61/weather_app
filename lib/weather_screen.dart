@@ -1,11 +1,46 @@
+import 'dart:convert';
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
 import 'package:weather_app/additional_information.dart';
 import 'package:weather_app/hourly_forcast_item.dart';
+import 'package:weather_app/secret.dart';
 
-class WeatherScreen extends StatelessWidget {
+class WeatherScreen extends StatefulWidget {
   const WeatherScreen({super.key});
+
+  @override
+  State<WeatherScreen> createState() => _WeatherScreenState();
+}
+
+class _WeatherScreenState extends State<WeatherScreen> {
+  double temp = 0;
+  void initState() {
+    super.initState();
+    getCurrentWeather();
+  }
+
+  Future getCurrentWeather() async {
+    try {
+      String cityName = 'London';
+
+      final res = await http.get(
+        Uri.parse(
+            'https://api.openweathermap.org/data/2.5/weather?q=$cityName,uk&APPID=$openApiKey'),
+      );
+      final data = jsonDecode(res.body);
+
+      if (data['cod'] != '200') {
+        throw 'error occured';
+      }
+      setState(() {
+        temp = data['list'][0]['main']['temp'];
+      });
+    } catch (e) {
+      throw e.toString();
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -45,12 +80,12 @@ class WeatherScreen extends StatelessWidget {
                       sigmaX: 10,
                       sigmaY: 10,
                     ),
-                    child: const Padding(
+                    child: Padding(
                       padding: const EdgeInsets.all(16.0),
                       child: Column(
                         children: [
                           Text(
-                            '300℉',
+                            '$temp k ',
                             style: TextStyle(
                                 fontSize: 32, fontWeight: FontWeight.bold),
                           ),
